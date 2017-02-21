@@ -1,7 +1,7 @@
 <layout version="0.1.0">
   <default>
       <reference name="head">
-          <block type="hreflang/hreflang" name="hreflang" template="seo/hreflang.phtml" />
+          <block type="hreflang/hreflang" name="hreflang" template="hreflang/hreflang.phtml" />
       </reference>
   </default>
 </layout>
