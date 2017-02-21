@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <cwtab translate="label">
+            <label>Canal Web</label>
+            <sort_order>14</sort_order>
+        </cwtab>
+    </tabs>
+    <sections>
+        <hreflang translate="label" module="hreflang">
+            <label>Metas Language</label>
+            <tab>cwtab</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>320</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <main translate="label" module="hreflang">
+                    <label>Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <activation translate="label">
+                            <label>Activated</label>
+                            <comment>Add hreflang metas tags in head for current page and its url in other stores</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </activation>
+                        <catsinproductsurls translate="label comment">
+                            <label>Products url with category paths</label>
+                            <comment>Add category paths to products urls</comment>                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <activation>1</activation>
+                            </depends>
+                        </catsinproductsurls>
+                    </fields>
+                </main>
+            </groups>
+        </hreflang>
+    </sections>
+</config>

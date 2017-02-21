@@ -1,0 +1,7 @@
+<layout version="0.1.0">
+  <default>
+      <reference name="head">
+          <block type="canalweb_hreflang/hreflang" name="hreflang" template="page/html/hreflang.phtml" />
+      </reference>
+  </default>
+</layout>

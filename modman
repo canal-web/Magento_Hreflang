@@ -1,0 +1,4 @@
+src/app/code/community/Canalweb/Hreflang                 app/code/community/Canalweb/Hreflang                
+src/app/design/frontend/base/default/layout/hreflang.xml app/design/frontend/base/default/layout/hreflang.xml
+src/app/design/frontend/base/default/template/page       app/design/frontend/base/default/template/page      
+src/app/etc/modules/Canalweb_Hreflang.xml                app/etc/modules/Canalweb_Hreflang.xml               

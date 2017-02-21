@@ -1,0 +1,8 @@
+<?php
+    // Fetch store's info from module code
+    $metas = $this->getHreflangMetas();
+
+    foreach ($metas as $localeCode => $url) {
+        echo '<link rel="alternate" hreflang="' . $localeCode . '" href="' . $url . '"/>' . "\n";
+    }
+?>
