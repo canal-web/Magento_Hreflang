@@ -14,7 +14,7 @@ class Canalweb_Hreflang_Block_Hreflang extends Mage_Core_Block_Template
                     // Basic informations for the store view
                     $storeId = $store->getId();
                     $localeCode = Mage::getStoreConfig('general/locale/code', $storeId);
-                    $baseUrl = Mage::app()->getStore($storeId)->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK);
+                    $storeUrl = Mage::app()->getStore($storeId)->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK);
 
                     /**
                      *  Case 1: Category page
@@ -24,7 +24,7 @@ class Canalweb_Hreflang_Block_Hreflang extends Mage_Core_Block_Template
                         $categoryId = Mage::registry('current_category')->getId();
 
                         // Construct url to return
-                        $url = $baseUrl . Mage::getModel('catalog/category')->setStoreId($storeId)->load($categoryId)->getUrlPath();
+                        $url = $storeUrl . Mage::getModel('catalog/category')->setStoreId($storeId)->load($categoryId)->getUrlPath();
                     }
 
                     /**
@@ -36,17 +36,14 @@ class Canalweb_Hreflang_Block_Hreflang extends Mage_Core_Block_Template
                         $product = Mage::getModel('catalog/product')->setStoreId($storeId)->load($productId);
 
                         // Construct url to return
-                        /*
-                         * TODO : option back-office pour ne pas virer les catégories de l'url
-                        if () {
-                        */
+                        // Case 1: no category in products urls (option in back-office)
+                        if (Mage::getStoreConfig('hreflang/main/catsinproductsurls')) {
                             $product->unsRequestPath();
                             $url = $product->getUrlInStore(array('_ignore_category' => true));
-                        /*
+                        // Case 2: keep categories
                         } else {
                             $url = $product->setStoreId($storeId)->load($productId)->getProductUrl();
                         }
-                        */
                     }
 
                     /**
@@ -60,8 +57,8 @@ class Canalweb_Hreflang_Block_Hreflang extends Mage_Core_Block_Template
                         } else {
                         */
                             // should be non-translatable url keys
-                            $currentPath = Mage::helper('hreflang/data')->getCurrentPath();
-                            $url = $base_url . $currentPath;
+                            $currentPageKey = Mage::getSingleton('cms/page')->getIdentifier();
+                            $url = $storeUrl . $currentPageKey;
                         /* }*/
                     }
 
@@ -71,7 +68,7 @@ class Canalweb_Hreflang_Block_Hreflang extends Mage_Core_Block_Template
                     else {
                         // should be non-translatable url keys
                         $currentPath = Mage::helper('hreflang/data')->getCurrentPath();
-                        $url = $base_url . $currentPath;
+                        $url = $storeUrl . $currentPath;
                     }
 
                     // In each case, add fetched informations for the store to the array we return
@@ -79,7 +76,7 @@ class Canalweb_Hreflang_Block_Hreflang extends Mage_Core_Block_Template
                 }
             }
         }
-        
+
         return $hreflangMetas;
     }
 }

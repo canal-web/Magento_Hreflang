@@ -7,7 +7,7 @@ class Canalweb_Hreflang_Helper_Data extends Mage_Core_Helper_Abstract
     public function getCurrentPath()
     {
         $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-        $currentPath = (Mage::getSingleton('core/url')->parseUrl($currentUrl))->getPath();
+        $currentPath = Mage::getSingleton('core/url')->parseUrl($currentUrl)->getPath();
         return $currentPath;
     }
 }

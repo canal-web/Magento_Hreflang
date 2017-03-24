@@ -1,8 +1,11 @@
 <?php
-    // Fetch store's info from module code
-    $metas = $this->getHreflangMetas();
+    // If functionnality is active
+    if(Mage::getStoreConfig('hreflang/main/activation') == 1) {
+        // Fetch store's info from module code
+        $metas = $this->getHreflangMetas();
 
-    foreach ($metas as $localeCode => $url) {
-        echo '<link rel="alternate" hreflang="' . $localeCode . '" href="' . $url . '"/>' . "\n";
+        foreach ($metas as $localeCode => $url) {
+            echo '<link rel="alternate" hreflang="' . $localeCode . '" href="' . $url . '" />' . "\n";
+        }
     }
 ?>
