@@ -1,7 +1,7 @@
 {
     "name": "canal-web/magento-hreflang",
     "type": "magento-module",
-    "description": "Really simple Magento module to add language meta tags in head for each store view locales.",
+    "description": "Simple Magento module to add language meta tags in head for each store view locales.",
     "require": {
     },
     "authors":[
